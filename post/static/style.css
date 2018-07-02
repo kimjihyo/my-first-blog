@@ -1,0 +1,60 @@
+* {
+    padding: 0;
+    margin: 0;
+    
+}
+.posting {
+    display: grid;
+    padding-top: 1em;
+    padding-left: 5em; padding-right: 5em;
+    grid-template-areas: 'title name'
+                         'cont cont'
+                         'submit submit';
+}
+#content {
+    grid-area: cont;
+    font-size: 16px;
+    height: 40em;
+    resize: none;
+    margin-bottom: 1em;
+}
+
+#title {
+    grid-area: title;
+    margin-right: .5em;
+}
+
+#name {
+    grid-area: name;
+    margin-left: .5em;
+}
+#title, #name {
+    font-size: 1em;
+    padding: 0.2em 0.2em;
+    margin-bottom: 1em;
+}
+
+#post-submit {
+    grid-area: submit;
+    font-size: 16px;
+    background: rgb(238, 238, 238);
+    height: 2em;
+}
+
+@media(max-width: 600px) {
+    .posting {
+        padding-left: 2em; padding-right: 2em;
+        grid-template-areas: 'title'
+                             'name'
+                             'cont'
+                             'submit';
+    }
+
+    #title {
+        margin-right: 0em;
+    }
+    
+    #name {
+        margin-left: 0em;
+    }
+}

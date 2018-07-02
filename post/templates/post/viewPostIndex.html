@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'viewPostStyle.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Cabin|Indie+Flower" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+    <title>View Post {{post.id}}</title>
+</head>
+<body>
+    <section class="main-section">
+        <div class="controller">
+            <ul>
+                <li id="view-all"><a href="{% url 'post:postpage' 1 %}">View All</a></li>
+                <li id="write-post"><a href="{% url 'post:AddNewPost' %}">Write a New Post</a></li>
+                <li id='delete-post'>
+                    <form id ='my_form'action="{% url 'post:DeletePost' post.pk %}" method="POST">
+                        {% csrf_token %}
+                        <a id='delete-button'href="javascript:{}" onclick="document.getElementById('my_form').submit();">Delete This Post</a>
+                    </form>
+                </li>
+                <li id='edit-post'><a href="{% url 'post:UpdatePost' post.pk %}">Edit This Post</a></li>
+            </ul>
+        </div>
+        <ul class="post-info">
+            <li id="subject">Subject: <strong>{{post.subject}}</strong></li>
+            <li id="author">Author: <strong>{{post.author}}</strong></li>
+            <li id="date">Date: <strong>{{post.date}}</strong></li>
+        </ul>
+        <p class="content">
+            {{post.content}}
+        </p>
+    </section>
+</body>
+</html>

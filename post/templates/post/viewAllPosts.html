@@ -1,0 +1,16 @@
+{% extends 'post/base.html' %}
+
+{% block content %}
+{% for up in posts %}
+<a href="{% url 'post:ViewPost' up.id %}">
+<li>
+    <ul class="posting-info">
+        <li class="number">{{up.pk}}</li>
+        <li class="subject">{{up.subject}}</li>
+        <li class="author">{{up.author}}</li>
+        <li class="date">{{up.date}}</li>
+    </ul>
+</li>
+</a>
+{% endfor %}
+{% endblock %}
